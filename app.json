@@ -1,0 +1,9 @@
+{
+    "name": "sugandh",
+    "description": "intern_task",
+    "repository": "https://github.com/naman815/Receipt-making-nodejs",
+    
+    "keywords": ["node", "express","multer","webshot","mongodb", "heroku"]
+    
+  }
+  
