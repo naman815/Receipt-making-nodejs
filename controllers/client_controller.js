@@ -1,10 +1,25 @@
 const multer = require('multer');
 const path = require('path');
 const webshot = require('webshot');
+const fs = require('fs');
 const AVATAR_PATH = path.join('/uploads/users/avatars');
 
 const Client = require('../models/client');
 
+
+var options = {
+    siteType: 'html',
+    screenSize: {
+      width: 320
+    , height: 480
+    }
+  , shotSize: {
+      width: 320
+    , height: 'all'
+    }
+  , userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
+      + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+};
 
 module.exports.client  = function(req,res){
 
@@ -15,19 +30,51 @@ module.exports.client  = function(req,res){
         recpNo : req.query.receipt
     });
 
-   
-    detail.save(function(err){
+    const path1 =  __dirname.split('\\');
+    path1.pop();
+    const logo = 'file:///' + path1.join('\\') + '/sugandh.png';
+    const image = 'file:///' + path1.join('\\') + '/uploads/users/avatars/file.jpg';
+    
+    // making receipt image
+    const HTML = `
+        <html>
+        <head>
+            <title></title>
+        </head>
+        <body style="font-family: 'Slabo 27px', serif;font-family: 'Roboto Slab', serif;background-color: white">
+            <div style="height: 550px;text-align: center; padding: 10px;border : 1px solid; " id="recp">
+                <img src="${logo}" id="logo" style="">
+                <br>
+                <br>
+        
+                <div style="text-align: left;">
+                    <span style="font-weight: bold;">Receipt No.: ${req.query.receipt}</span><br>
+        
+                    <p>We have received an amount of Rs.${req.query.recieved} from ${req.query.name}, ${req.query.address}.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <span>Thank You.</span>
+        
+                </div>
+                <img src="${image}" style="width: 200px;position: relative;bottom: -118px;height: 100px;">
+            </div>
+        </body>
+        </html>`
+
+     // saving data in database
+     detail.save(function(err){
         if(err){
             console.log('Error in creating receipt', err);
             return;
         }
 
-        return res.redirect('back');
+        webshot(HTML, 'image.png', options, function(err) {
+            const path =  __dirname.split('\\');
+            path.pop();
+            res.sendFile(path.join('\\') + '/image.png');
+        });
     });
-    // webshot(html, 'hello_world.png', {siteType:'html'}, function(err) {
-    //     // screenshot now saved to hello_world.png
-    // });
-
 }
 
 let storage = multer.diskStorage({
@@ -35,7 +82,7 @@ let storage = multer.diskStorage({
       cb(null, path.join(__dirname, '..', AVATAR_PATH));
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname));
+      cb(null, file.fieldname +".jpg");
     }
 });
 
