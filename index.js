@@ -1,6 +1,6 @@
 const express = require('express');   // including express js 
 const path = require('path');   //accessing path module
-const port = 8000; // defining port 
+const port = process.env.PORT || 8000; // defining port 
 const db= require('./config/mongoose'); // accessing datebase
 const client = require('./models/client');  //including database schema
 var bodyParser = require('body-parser'); // adding body parser to project
