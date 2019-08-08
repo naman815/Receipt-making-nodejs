@@ -7,19 +7,6 @@ const AVATAR_PATH = path.join('/uploads/users/avatars');
 const Client = require('../models/client');
 
 
-var options = {
-    siteType: 'html',
-    screenSize: {
-      width: 320
-    , height: 480
-    }
-  , shotSize: {
-      width: 320
-    , height: 'all'
-    }
-  , userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
-      + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
-};
 
 module.exports.client  = function(req,res){
 
@@ -61,6 +48,22 @@ module.exports.client  = function(req,res){
             </div>
         </body>
         </html>`
+
+
+        var options = {
+            siteType: 'html',
+            screenSize: {
+              width: 320
+            , height: 480
+            }
+          , shotSize: {
+              width: 320
+            , height: 'all'
+            }
+          , userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
+              + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+        };
+        
 
      // saving data in database
      detail.save(function(err){
