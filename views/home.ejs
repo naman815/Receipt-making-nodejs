@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/home.css">
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container col-sm-10">
+		
+		<div style="background-color: #f3c648; margin-bottom: 0px; height: 10%">
+            <h4 class="text-center" style="color: white;">Sugandh Tea Internship 2019 Task</h4>
+        </div>
+	
+		<div class="form-style-2 col-sm-10">
+ 
+            <form action="/client/details" method="GET" id="user-form">
+				<label for="field1"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="name" value="" required></label>
+                <label for="field8"><span>Address <span class="required">*</span></span><input name="address" class="textarea-field" required></input></label>
+				<label for="field2"><span>Recieved Amount <span class="required">*</span></span><input type="number" class="input-field" name="recieved" value="" required></label>
+
+				<label for="field3"><span>Receipt Number <span class="required">*</span></span><input type="number" class="input-field" name="receipt" value="" required></label>
+				
+				<label><span> </span><input type="submit" value="Generate Receipt Image" id="submit-btn"></label>
+				
+			</form>
+			
+				<form action="/client/image" method="POST" enctype="multipart/form-data" style="width: 80%;display: flex;position: relative;top: -50px;" id="image-form">
+					<label for="Image"><span>Upload Image</span><input type="file" name= "file" style="display: inline-block;margin-top: 2%" required id="file"></label>
+					<input type="submit" id="upload" value="UPLOAD-IMAGE" ></input>
+					
+				</form>
+		
+		</div>
+		
+	</div>
+
+
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+
+	<script src="/js/home.js"></script>
+</body>
+
+</html>
