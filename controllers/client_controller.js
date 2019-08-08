@@ -70,9 +70,9 @@ module.exports.client  = function(req,res){
         }
 
         webshot(HTML, 'image.png', options, function(err) {
-            const path =  __dirname.split('\\');
-            path.pop();
-            res.sendFile(path.join('\\') + '/image.png');
+            const path2 =  __dirname.split('\\');
+            path2.pop();
+            res.sendFile(path2.join('\\') + '/image.png');
         });
     });
 }
