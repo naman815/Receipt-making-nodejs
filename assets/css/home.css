@@ -96,6 +96,9 @@
 	}
 
 	#submit-btn{
-		top : 70px;
+		position: relative;
+		top: 20px;
+		left: -70px;
+		width: 35%;
 	}
 }
