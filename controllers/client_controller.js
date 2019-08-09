@@ -75,6 +75,7 @@ module.exports.client  = function(req,res){
         webshot(HTML, 'image.png', options, function(err) {
             if (err !== null) {
                 console.log('Error occured', err);
+                
             }
             const path2 =  __dirname.split('\\');
             path2.pop();
