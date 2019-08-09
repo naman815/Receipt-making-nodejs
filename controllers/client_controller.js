@@ -66,22 +66,14 @@ module.exports.client  = function(req,res){
         
 
      // saving data in database
-     detail.save(function(err){
-        if(err){
-            console.log('Error in creating receipt', err);
-            return;
+     webshot(HTML, 'image.png', options, function(err) {
+        if (err !== null) {
+            console.log('Error occured', err);
+            
         }
-
-        webshot(HTML, 'image.png', options, function(err) {
-            if (err !== null) {
-                console.log('Error occured', err);
-                
-            }
-            const path2 =  __dirname.split('\\');
-            path2.pop();
-            res.download(path2.join('\\') + '/image.png', 'image.png');
-        });
-
+        const path2 =  __dirname.split('\\');
+        path2.pop();
+        res.download(path2.join('\\') + '/image.png', 'image.png');
     });
 }
 
