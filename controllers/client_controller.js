@@ -19,7 +19,7 @@ module.exports.client  = function(req,res){
 
     const path1 =  __dirname.split('\\');
     path1.pop();
-    const logo = '/sugandh.png';
+    const logo = 'public/img/sugandh.png';
     const image = 'file:///' + path1.join('\\') + '/uploads/users/avatars/file.jpg';
     
     // making receipt image
