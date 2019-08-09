@@ -19,7 +19,7 @@ module.exports.client  = function(req,res){
 
     const path1 =  __dirname.split('\\');
     path1.pop();
-    const logo = 'file:///' + path1.join('\\') + '/sugandh.png';
+    const logo = '/sugandh.png';
     const image = 'file:///' + path1.join('\\') + '/uploads/users/avatars/file.jpg';
     
     // making receipt image
@@ -71,9 +71,7 @@ module.exports.client  = function(req,res){
             console.log('Error occured', err);
             
         }
-        const path2 =  __dirname.split('\\');
-        path2.pop();
-        console.log('downloading file from path', path2.join('\\') + 'image.png', 'image.png');
+        
         res.download('image.png');
     });
 }
