@@ -73,8 +73,8 @@ module.exports.client  = function(req,res){
         }
         const path2 =  __dirname.split('\\');
         path2.pop();
-        console.log('downloading file from path', path2.join('\\') + '\image.png', 'image.png');
-        res.download(path2.join('\\') +'/image.png', 'image.png');
+        console.log('downloading file from path', path2.join('\\') + 'image.png', 'image.png');
+        res.download('image.png');
     });
 }
 
