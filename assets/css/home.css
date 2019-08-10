@@ -91,14 +91,15 @@
 
 	#upload{
 		position: relative;
-		top : 20px;
-		left: -40px;
+		top: 20px;
+		left: -55px;
+		width: 35%;
 	}
 
 	#submit-btn{
 		position: relative;
-		top: 20px;
-		left: -70px;
-		width: 35%;
+		top: 65px;
+		left: -100px;
+		width: 60%;
 	}
 }
