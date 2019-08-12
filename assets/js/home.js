@@ -1,6 +1,9 @@
-$(document).ready(function(){
 
+$(document).ready(function(){
+    
     $("#upload").click(function(e){
+
+        let target = $(e.target);
         e.preventDefault();
         var fd = new FormData();
         var files = $('#file')[0].files[0];
@@ -16,11 +19,16 @@ $(document).ready(function(){
                 if(response != 0){
                     $("#img").attr("src",response); 
                     $(".preview img").show(); // Display image element
-                    alert('photo uploaded successfully')
+                    alert('photo uploaded successfully');
+                    
                 }else{
                     alert('file not uploaded');
                 }
             },
         });
+
+         // Check to see if the target is the div.
+ 
     });
 });
+

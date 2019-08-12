@@ -6,6 +6,13 @@ const AVATAR_PATH = path.join('/uploads/users/avatars');
 
 const Client = require('../models/client');
 
+// date in receipt image
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+var today = new Date();
+var date = today.getDate()+' '+monthNames[today.getMonth()]+' ,'+today.getFullYear();
 
 
 module.exports.client  = function(req,res){
@@ -19,8 +26,8 @@ module.exports.client  = function(req,res){
 
     const path1 =  __dirname.split('\\');
     path1.pop();
-    const logo = "https://receipt-making.herokuapp.com/images/sugandh.png";
-    const image = "https://receipt-making.herokuapp.com/uploads/users/avatars/file.jpg";
+    const logo = "http://localhost:8000/images/sugandh.png";
+    const image = "http://localhost:8000/uploads/users/avatars/file.jpg";
     
     // making receipt image
     const HTML = `
@@ -37,7 +44,7 @@ module.exports.client  = function(req,res){
                 <div style="text-align: left;">
                     <span style="font-weight: bold;">Receipt No.: ${req.query.receipt}</span><br>
         
-                    <p>We have received an amount of Rs.${req.query.recieved} from ${req.query.name}, ${req.query.address}.</p>
+                    <p>We have received an amount of Rs.${req.query.recieved} from ${req.query.name}, ${req.query.address}  on ${date}.</p>
                     <br>
                     <br>
                     <br>
@@ -76,6 +83,7 @@ module.exports.client  = function(req,res){
     });
 }
 
+// alloting storage for uploaded photo
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname, '..', AVATAR_PATH));
@@ -92,7 +100,7 @@ const upload = multer({
 
 
 
-
+// controller for uploading function
 module.exports.upload = function(req,res){
     upload(req,res,(err) =>{
         if(err){
