@@ -26,8 +26,8 @@ module.exports.client  = function(req,res){
 
     const path1 =  __dirname.split('\\');
     path1.pop();
-    const logo = "https://receipt-making.herokuapp.com/images/sugandh.png";
-    const image = "https://receipt-making.herokuapp.com/uploads/users/avatars/file.jpg";
+    const logo = "https://receipt-generater.herokuapp.com/images/sugandh.png";
+    const image = "https://receipt-generater.herokuapp.com/uploads/users/avatars/file.jpg";
     
     // making receipt image
     const HTML = `
